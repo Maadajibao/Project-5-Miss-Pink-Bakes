@@ -44,13 +44,23 @@
     <div class="message-container"></div>
     {% endif%}
     <!--/Messages-->
+    
+    {% block page_header %}
+    {% endblock %}
+
 
 
     <!--Main-->
+    {% block content %}
+    {% endblock %}
+
     <!--/Main-->  
 
     <!--Footer-->
     <!--/Footer-->
+    
+    {% block postloadjs %}
+    {% endblock %}
 
   </body>
 </html>
