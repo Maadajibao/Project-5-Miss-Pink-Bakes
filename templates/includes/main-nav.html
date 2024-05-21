@@ -20,10 +20,10 @@
                 Cake
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="cake-link">
-                <a href="" class="dropdown-item">Birthday Cakes</a>
-                <a href="" class="dropdown-item">Party Cakes</a>
-                <a href="" class="dropdown-item">Anniversary Cake</a>
-                <a href="" class="dropdown-item">All Cakes</a>
+                <a href="{% url 'products' %}?category=birthday_cakes" class="dropdown-item">Birthday Cakes</a>
+                <a href="{% url 'products' %}?category=party_cakes" class="dropdown-item">Party Cakes</a>
+                <a href="{% url 'products' %}?category=anniversary_cakes" class="dropdown-item">Anniversary Cakes</a>
+                <a href="{% url 'products' %}?category=birthday_cakes,party_cakes,anniversary_cakes" class="dropdown-item">All Cakes</a>
             </div>
         </li>
         <!--/Cakes menu-->
@@ -34,9 +34,9 @@
                 Bread
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="bread-link">
-                <a href="" class="dropdown-item">White Bread</a>
-                <a href="" class="dropdown-item">Brown Bread</a>
-                <a href="" class="dropdown-item">All Breads</a>
+                <a href="{% url 'products' %}?category=white_bread" class="dropdown-item">White Bread</a>
+                <a href="{% url 'products' %}?category=brown_bread" class="dropdown-item">Brown Bread</a>
+                <a href="{% url 'products' %}?category=white_bread,brown_bread" class="dropdown-item">All Breads</a>
             </div>
         </li>
         <!--/Bread menu-->
@@ -47,9 +47,9 @@
                 Cookies &amp; Brownies
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="cookiesnbrownies-link">
-                <a href="" class="dropdown-item">Cookies</a>
-                <a href="" class="dropdown-item">Brownies</a>
-                <a href="" class="dropdown-item">All Cookies &amp; Brownies</a>
+                <a href="{% url 'products' %}?category=cookies" class="dropdown-item">Cookies</a>
+                <a href="{% url 'products' %}?category=brownies" class="dropdown-item">Brownies</a>
+                <a href="{% url 'products' %}?category=cookies,brownies" class="dropdown-item">All Cookies &amp; Brownies</a>
             </div>
         </li>
         <!--/Cookies and brownies menu-->   
@@ -60,11 +60,10 @@
                 Pastries
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="pastries-link">
-                <a href="" class="dropdown-item"></a>
-                <a href="" class="dropdown-item">Cinnamon Rolls</a>
-                <a href="" class="dropdown-item">Croissant</a>
-                <a href="" class="dropdown-item">Danish Pastry</a>
-                <a href="" class="dropdown-item">All Pastries</a>
+                <a href="{% url 'products' %}?category=cinnamon_rolls" class="dropdown-item">Cinnamon Rolls</a>
+                <a href="{% url 'products' %}?category=croissant" class="dropdown-item">Croissant</a>
+                <a href="{% url 'products' %}?category=danish_pastry" class="dropdown-item">Danish Pastry</a>
+                <a href="{% url 'products' %}?category=cinnamon_rolls,croissant,danish_pastry" class="dropdown-item">All Pastries</a>
             </div>
         </li>
         <!--/Pastries menu-->   
@@ -75,10 +74,10 @@
                 Special Offers
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">New Arrivals</a>
-                <a href="" class="dropdown-item">Deals</a>
-                <a href="" class="dropdown-item">Clearance</a>
-                <a href="" class="dropdown-item">All Specials</a>
+                <a href="{% url 'products' %}?category=new_arrivals" class="dropdown-item">New Arrivals</a>
+                <a href="{% url 'products' %}?category=deals" class="dropdown-item">Deals</a>
+                <a href="{% url 'products' %}?category=clearance" class="dropdown-item">Clearance</a>
+                <a href="{% url 'products' %}?category=new_arrivals,deals,clearance" class="dropdown-item">All Specials</a>
             </div>
         </li>
         <!--/Special offers menu-->   
