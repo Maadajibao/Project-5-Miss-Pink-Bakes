@@ -15,12 +15,15 @@ def all_products(request):
     direction = None
 
     if request.GET:
+        # Sorting
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
             if sortkey == 'name':
                 sortkey = 'lower_name'
                 products = products.annotate(lower_name=Lower('name'))
+            if sortkey == 'category':
+                sortkey = 'category__name'                
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
@@ -33,6 +36,7 @@ def all_products(request):
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
 
+        # Searching
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
