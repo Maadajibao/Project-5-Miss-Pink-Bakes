@@ -55,6 +55,7 @@
                                         <p class="my-0">${{ item.product.price }}</p>
                                     </td>
                                     <td class="py-3 w-25">
+                                        <!-- Quantity form -->
                                         <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
                                             {% csrf_token %}
                                             <div class="form-group">
@@ -85,6 +86,7 @@
                                                 </div>
                                             </div>
                                         </form>
+                                        <!-- /Quantity form -->
                                         <a class="update-link text-info"><small>Update</small></a>
                                         <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product_bundle="{{ item.bundle }}"><small>Remove</small></a>
                                     </td>
@@ -154,9 +156,9 @@
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
-        var bundle = $(this).data('product_bundle');
+        var bundle = $(this).data('bundle');
         var url = `/bag/remove/${itemId}`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'product_bundle': bundle};
+        var data = {'csrfmiddlewaretoken': csrfToken, 'bundle': bundle};
 
         $.post(url, data)
          .done(function() {
