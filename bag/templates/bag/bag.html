@@ -60,6 +60,7 @@
                                             {% csrf_token %}
                                             <div class="form-group">
                                                 <div class="input-group">
+                                                    <!-- Button for lowering quantity-->
                                                     <div class="input-group-prepend">
                                                         <button class="decrement-qty btn btn-sm btn-black rounded-0" 
                                                             data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
@@ -68,10 +69,12 @@
                                                             </span>
                                                         </button>
                                                     </div>
+                                                    <!-- /Button for lowering quantity-->
                                                     <input class="form-control form-control-sm qty_input" type="number"
                                                         name="quantity" value="{{ item.quantity }}" min="1" max="99"
                                                         data-item_id="{{ item.item_id }}"
                                                         id="id_qty_{{ item.item_id }}">
+                                                    <!-- Button for increasing quantity-->    
                                                     <div class="input-group-append">
                                                         <button class="increment-qty btn btn-sm btn-black rounded-0"
                                                             data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
@@ -80,6 +83,7 @@
                                                             </span>
                                                         </button>
                                                     </div>
+                                                    <!-- /Button for increasing quantity--> 
                                                     {% if item.product.has_amount %}
                                                         <input type="hidden" name="product_bundle" value="{{ item.bundle }}">
                                                     {% endif %}
@@ -87,8 +91,12 @@
                                             </div>
                                         </form>
                                         <!-- /Quantity form -->
+                                        <!-- Link to update quantity--> 
                                         <a class="update-link text-info"><small>Update</small></a>
+                                        <!-- /Link to update quantity-->
+                                         <!-- Link to remove quantity-->  
                                         <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product_bundle="{{ item.bundle }}"><small>Remove</small></a>
+                                        <!-- /Link to remove quantity--> 
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">${{ item.product.price | calc_subtotal:item.quantity }}</p>
@@ -156,9 +164,9 @@
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
-        var bundle = $(this).data('bundle');
+        var bundle = $(this).data('product_bundle');
         var url = `/bag/remove/${itemId}`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'bundle': bundle};
+        var data = {'csrfmiddlewaretoken': csrfToken, 'product_bundle': bundle};
 
         $.post(url, data)
          .done(function() {
