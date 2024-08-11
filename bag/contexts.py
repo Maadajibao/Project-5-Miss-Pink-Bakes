@@ -10,7 +10,7 @@ def bag_contents(request):
     product_count = 0
     bag = request.session.get('bag', {})
 
-    print(f"Bag session data:{bag}")
+    
 
     for item_id, item_data in bag.items():
         if isinstance(item_data, int):
@@ -22,7 +22,7 @@ def bag_contents(request):
                 'quantity': item_data,
                 'product': product,
             })
-            print(f"Item added without bundle: {item_id}, quantity: {item_data}, product: product: {product.name}")      
+                
         else:
             product = get_object_or_404(Product, pk=item_id)
             for bundle, quantity in item_data['items_by_bundle'].items():
@@ -34,8 +34,7 @@ def bag_contents(request):
                     'product': product,
                     'bundle': bundle,
                 })
-                print(f"Item added with bundle: {item_id}, quantity: {item_data}, product: product: {product.name}, bundle: {bundle}")
-
+                
               
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
@@ -58,5 +57,4 @@ def bag_contents(request):
     }
 
 
-    print(f"Context: {context}")
     return context
