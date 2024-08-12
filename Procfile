@@ -1,1 +1,1 @@
-web: gunicorn codestar.wsgi
+web: gunicorn miss_pink_bakes.wsgi:application
